@@ -1,6 +1,14 @@
 // Set the date we're counting down to
 const countdownDate = new Date("March 15, 2025 00:00:00").getTime();
 
+// Get the audio element
+const backgroundMusic = document.getElementById("background-music");
+
+// Play music when the user interacts with the page
+document.body.addEventListener("click", () => {
+    backgroundMusic.play();
+});
+
 // Update the countdown every second
 const timer = setInterval(() => {
     // Get today's date and time
