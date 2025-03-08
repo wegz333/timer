@@ -1,5 +1,5 @@
-// Set the date we're counting down to
-const countdownDate = new Date("March 15, 2025 00:00:00").getTime();
+// Set the date we're counting down to (use 'let' instead of 'const')
+let countdownDate = new Date("March 15, 2025 00:00:00").getTime();
 
 // Get the audio element
 const backgroundMusic = document.getElementById("background-music");
@@ -48,7 +48,7 @@ if (savedTimeRemaining) {
     // Use the saved time remaining
     const now = new Date().getTime();
     const newCountdownDate = now + parseInt(savedTimeRemaining);
-    countdownDate = newCountdownDate;
+    countdownDate = newCountdownDate; // This works now because countdownDate is 'let'
 }
 
 // Update the countdown every second
