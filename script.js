@@ -1,5 +1,17 @@
-// Set the date we're counting down to (use 'let' instead of 'const')
-let countdownDate = new Date("March 15, 2025 00:00:00").getTime();
+// Set the date we're counting down to (March 15, 2025, 00:00:00 Cairo time)
+const cairoTime = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Africa/Cairo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+}).format(new Date('2025-03-15T00:00:00'));
+
+// Convert the Cairo time to a timestamp
+let countdownDate = new Date(cairoTime).getTime();
 
 // Get the audio element
 const backgroundMusic = document.getElementById("background-music");
