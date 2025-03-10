@@ -11,7 +11,7 @@ const cairoTime = new Intl.DateTimeFormat('en-US', {
 }).format(new Date('2025-03-15T00:00:00'));
 
 // Convert the Cairo time to a timestamp
-let countdownDate = new Date(cairoTime).getTime();
+const countdownDate = new Date(cairoTime).getTime();
 
 // Get the audio element
 const backgroundMusic = document.getElementById("background-music");
@@ -27,7 +27,7 @@ function updateCountdown() {
     const now = new Date().getTime();
 
     // Calculate the time remaining
-    let timeRemaining = countdownDate - now;
+    const timeRemaining = countdownDate - now;
 
     // If the countdown is over, stop the timer
     if (timeRemaining < 0) {
@@ -36,9 +36,6 @@ function updateCountdown() {
         localStorage.removeItem("timeRemaining"); // Clear storage when countdown is over
         return;
     }
-
-    // Save the remaining time to localStorage
-    localStorage.setItem("timeRemaining", timeRemaining);
 
     // Calculate days, hours, minutes, and seconds
     const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
@@ -51,16 +48,9 @@ function updateCountdown() {
     document.getElementById("hours").innerText = hours;
     document.getElementById("minutes").innerText = minutes;
     document.getElementById("seconds").innerText = seconds;
-}
 
-// Check if there's a saved remaining time in localStorage
-const savedTimeRemaining = localStorage.getItem("timeRemaining");
-
-if (savedTimeRemaining) {
-    // Use the saved time remaining
-    const now = new Date().getTime();
-    const newCountdownDate = now + parseInt(savedTimeRemaining);
-    countdownDate = newCountdownDate; // This works now because countdownDate is 'let'
+    // Save the remaining time to localStorage
+    localStorage.setItem("timeRemaining", timeRemaining);
 }
 
 // Update the countdown every second
